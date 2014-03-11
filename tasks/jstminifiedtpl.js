@@ -54,7 +54,7 @@ module.exports = function( grunt) {
         result += options.appendJSCode;
       }
       grunt.file.write( f.dest, result);
-      grunt.log.write( 'Creating file '+f.dest);
+      grunt.log.ok( 'Creating file '+f.dest);
     });
 
   });
