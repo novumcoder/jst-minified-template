@@ -1,7 +1,7 @@
 {
   "name": "grunt-jstminifiedtpl",
   "description": "produce JST file with minified html",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "homepage": "https://github.com/novumcoder/jst-minified-template",
   "author": {
     "name": "Eser Esen",

@@ -33,11 +33,15 @@ module.exports = function( grunt) {
       // Read file source.
       f.src.forEach( function(htmlfile) {
         var name = htmlfile.substr(0, htmlfile.lastIndexOf('.'));
+        var max = grunt.file.read(htmlfile);
+        var min = minify( max, options);
         if( options.wrapfunction) {
-          entries.push( '"'+name+'":'+options.wrapfunction+'('+JSON.stringify( minify( grunt.file.read(htmlfile), options))+')');
+          entries.push( '"'+name+'":'+options.wrapfunction+'('+JSON.stringify( min)+')');
         } else {
-          entries.push( '"'+name+'":'+JSON.stringify( minify( grunt.file.read(htmlfile), options)));
+          entries.push( '"'+name+'":'+JSON.stringify( min));
         }
+        
+        grunt.log.writeln( 'Handling file '+chalk.red(htmlfile)+', original size: '+chalk.cyan(prettyBytes(max.length))+', minified: '+chalk.cyan(prettyBytes(min.length)));
       });
 
       result += '{'+entries.join(',')+'};';
@@ -45,7 +49,7 @@ module.exports = function( grunt) {
         result += options.appendJSCode;
       }
       grunt.file.write( f.dest, result);
-      grunt.log.write( 'File write to '+f.dest);
+      grunt.log.write( 'Creating file '+f.dest);
     });
 
   });
