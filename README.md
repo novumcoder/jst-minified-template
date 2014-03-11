@@ -71,13 +71,15 @@ Wrap the minified template into a function, not wrapped by default
 
 #### Default Options
 In this example, the default options are used to do something with whatever.
+Resulting file will have window.JST having both HTML file minified.
+So test.js can be used to load HTML with only one js file (JST).
 
 ```js
 grunt.initConfig({
   jstminifiedtpl: {
     options: {},
     files: {
-      'dest/default_options': ['src/a.html', 'src/b.html'],
+      'dest/test.js': ['src/a.html', 'src/b.html'],
     },
   },
 });
