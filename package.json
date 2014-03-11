@@ -1,6 +1,6 @@
 {
-  "name": "eeTemplate",
-  "description": "produce JST file with minified html for ee.Template",
+  "name": "jstminifiedtpl",
+  "description": "produce JST file with minified html",
   "version": "0.1.0",
   "homepage": "https://github.com/novumcoder/jst-minified-template",
   "author": {
@@ -36,7 +36,7 @@
     "grunt-contrib-jshint": "~0.6.0",
     "grunt-contrib-clean": "~0.4.0",
     "grunt-contrib-nodeunit": "~0.2.0",
-    "grunt": "~0.4.3"
+    "grunt": "~0.4.2"
   },
   "peerDependencies": {
     "grunt": "~0.4.2"

@@ -22,7 +22,7 @@ var grunt = require('grunt');
     test.ifError(value)
 */
 
-exports.eeTemplate = {
+exports.jstminifiedtpl = {
   setUp: function(done) {
     // setup here if necessary
     done();
@@ -30,19 +30,28 @@ exports.eeTemplate = {
   default_options: function(test) {
     test.expect(1);
 
-    var actual = grunt.file.read('tmp/default_options');
+    var actual = grunt.file.read('tmp/default_options.js');
     var expected = grunt.file.read('test/expected/default_options');
-    test.equal(actual, expected, 'should describe what the default behavior is.');
+    test.equal(actual, expected, 'expected js content');
 
     test.done();
   },
-  custom_options: function(test) {
+  appendjs_options: function(test) {
     test.expect(1);
 
-    var actual = grunt.file.read('tmp/custom_options');
-    var expected = grunt.file.read('test/expected/custom_options');
-    test.equal(actual, expected, 'should describe what the custom option(s) behavior is.');
+    var actual = grunt.file.read('tmp/appendjs_options.js');
+    var expected = grunt.file.read('test/expected/appendjs_options');
+    test.equal(actual, expected, 'expected js content');
 
     test.done();
   },
+  wrapandappendjs_options: function(test) {
+    test.expect(1);
+
+    var actual = grunt.file.read('tmp/wrapandappendjs_options.js');
+    var expected = grunt.file.read('test/expected/wrapandappendjs_options');
+    test.equal(actual, expected, 'expected js content');
+
+    test.done();
+  }
 };

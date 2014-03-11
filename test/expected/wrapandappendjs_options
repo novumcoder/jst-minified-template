@@ -1,0 +1,1 @@
+var window=window||(window={});function myfunction2(a){}function parse(a){}window.JST={"test/a/hello":parse("<span>Hello World</span> <span>{{text}}</span>"),"test/b/world":parse("<div class=\"helloworld\">Test file {{test}}</div>"),"test/start":parse("<div class=\"start\">{{hello}}</div><div>{{morestuff}}</div>")};myfunction2( window.JST);
