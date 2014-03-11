@@ -84,7 +84,9 @@ grunt.initConfig({
 ```
 
 #### Custom Options
-In this example, custom options are used to do something else with whatever else. So if the `testing` file has the content `Testing` and the `123` file had the content `1 2 3`, the generated result in this case would be `Testing: 1 2 3 !!!`
+In this example, custom options are used to do something else.
+We prefix the result with window.JST as usual, comments are removed, white space and empty attr too.
+HTML files in src/ and src/a will be minified and put into result object (window.JST)
 
 ```js
 grunt.initConfig({
@@ -97,7 +99,29 @@ grunt.initConfig({
       removeEmptyAttributes: true
     },
     files: {
-      'dest/tpl.js': ['src/testing', 'src/123'],
+      'dest/tpl.js': ['src/*.html', 'src/a/*.html'],
+    },
+  },
+});
+```
+
+Here we use wrapfunction and appendJSCode:
+Each minified template/HTML will be wrapped within function myfunction, so we can do something before they are assigned to window.JST.
+Then we append some additional code after the window.JST object, for example to do something with the resulting window.JST.
+
+```js
+grunt.initConfig({
+  jstminifiedtpl: {
+    options: {
+      prefix: 'window.JST',
+      wrapfunction: 'myfunction',
+      appendJSCode: 'doSomething(window.JST);',
+      removeComments: true,
+      collapseWhitespace: true,
+      removeEmptyAttributes: true
+    },
+    files: {
+      'dest/tpl.js': ['src/*.html', 'src/a/*.html'],
     },
   },
 });
