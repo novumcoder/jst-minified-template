@@ -53,6 +53,15 @@ module.exports = function( grunt) {
         files: {
           'tmp/wrapandappendjs_options.js': ['test/a/*.html', 'test/b/*.html', 'test/*.html'],
         },
+      },
+      removeprefix_options: {
+        options: {
+          prefix: 'var window=window||(window={});window.JST',
+          removekeyprefix: 'test/'
+        },
+        files: {
+          'tmp/removeprefix_options.js': ['test/a/*.html', 'test/b/*.html', 'test/*.html'],
+        },
       }
     },
 

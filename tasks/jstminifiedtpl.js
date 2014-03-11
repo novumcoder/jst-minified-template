@@ -20,6 +20,7 @@ module.exports = function( grunt) {
       prefix: 'window.JST',
       wrapfunction: '',
       removeComments: true,
+      removekeyprefix: '',
       collapseWhitespace: true,
       removeEmptyAttributes: true,
       appendJSCode: ''
@@ -33,6 +34,10 @@ module.exports = function( grunt) {
       // Read file source.
       f.src.forEach( function(htmlfile) {
         var name = htmlfile.substr(0, htmlfile.lastIndexOf('.'));
+        if( options.removekeyprefix) {
+          var regexp = new RegExp( options.removekeyprefix, 'g');
+          name = name.replace( regexp, '');
+        }
         var max = grunt.file.read(htmlfile);
         var min = minify( max, options);
         if( options.wrapfunction) {

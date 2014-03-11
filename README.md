@@ -67,6 +67,16 @@ Default value: ``
 
 Wrap the minified template into a function, not wrapped by default
 
+#### options.removekeyprefix
+Type: `String`
+Default value: ``
+
+Basically the relative path of each file minified into JST will be used as key in the resulting object,
+here you can define what part of the key to remove.
+If your files are located at templates/foo/bar/main.html then your key in the resulting object will
+be templates/foo/bar/main. But lets say you want to get rid of the templates/foo/ so your key results
+in bar/main, then set the option to templates/foo/
+
 ### Usage Examples
 
 #### Default Options
@@ -118,6 +128,30 @@ grunt.initConfig({
       prefix: 'window.JST',
       wrapfunction: 'myfunction',
       appendJSCode: 'doSomething(window.JST);',
+      removeComments: true,
+      collapseWhitespace: true,
+      removeEmptyAttributes: true
+    },
+    files: {
+      'dest/tpl.js': ['src/*.html', 'src/a/*.html'],
+    },
+  },
+});
+```
+
+Here we use wrapfunction and appendJSCode:
+Each minified template/HTML will be wrapped within function myfunction, so we can do something before they are assigned to window.JST.
+Then we append some additional code after the window.JST object, for example to do something with the resulting window.JST.
+Additionally we remove src/ from the keys so our resulting object will only contain html filenames as keys.
+
+```js
+grunt.initConfig({
+  jstminifiedtpl: {
+    options: {
+      prefix: 'window.JST',
+      wrapfunction: 'myfunction',
+      appendJSCode: 'doSomething(window.JST);',
+      removekeyprefix: 'src/'
       removeComments: true,
       collapseWhitespace: true,
       removeEmptyAttributes: true

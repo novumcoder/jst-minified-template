@@ -1,0 +1,1 @@
+var window=window||(window={});window.JST={"a/hello":"<span>Hello World</span> <span>{{text}}</span>","b/world":"<div class=\"helloworld\">Test file {{test}}</div>","start":"<div class=\"start\">{{hello}}</div><div>{{morestuff}}</div>"};
