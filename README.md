@@ -74,7 +74,7 @@ In this example, the default options are used to do something with whatever. So 
 
 ```js
 grunt.initConfig({
-  eeTemplate: {
+  jstminifiedtpl: {
     options: {},
     files: {
       'dest/default_options': ['src/testing', 'src/123'],
