@@ -1,4 +1,4 @@
-# eeTemplate
+# JST minifed template
 
 > produce JST file with minified html for ee.Template
 
@@ -8,23 +8,23 @@ This plugin requires Grunt `~0.4.2`
 If you haven't used [Grunt](http://gruntjs.com/) before, be sure to check out the [Getting Started](http://gruntjs.com/getting-started) guide, as it explains how to create a [Gruntfile](http://gruntjs.com/sample-gruntfile) as well as install and use Grunt plugins. Once you're familiar with that process, you may install this plugin with this command:
 
 ```shell
-npm install eeTemplate --save-dev
+npm install jstminifiedtpl --save-dev
 ```
 
 Once the plugin has been installed, it may be enabled inside your Gruntfile with this line of JavaScript:
 
 ```js
-grunt.loadNpmTasks('eeTemplate');
+grunt.loadNpmTasks('jstminifiedtpl');
 ```
 
-## The "eeTemplate" task
+## The "JST minifed template" task
 
 ### Overview
 In your project's Gruntfile, add a section named `eeTemplate` to the data object passed into `grunt.initConfig()`.
 
 ```js
 grunt.initConfig({
-  eeTemplate: {
+  jstminifiedtpl: {
     options: {
       // Task-specific options go here.
     },
@@ -37,17 +37,35 @@ grunt.initConfig({
 
 ### Options
 
-#### options.separator
+#### options.removeComments
+Type: `Boolean`
+Default value: `true`
+
+Remove comments in HTML
+
+#### options.collapseWhitespace
+Type: `Boolean`
+Default value: `true`
+
+Remove white space in HTML
+
+#### options.removeEmptyAttributes
+Type: `Boolean`
+Default value: `true`
+
+Remove empty attributes from HTML tags
+
+#### options.prefix
 Type: `String`
-Default value: `',  '`
+Default value: `window.JST`
 
-A string value that is used to do something with whatever.
+The global scope var to be used to set the minified templates in the jst file
 
-#### options.punctuation
+#### options.wrapfunction
 Type: `String`
-Default value: `'.'`
+Default value: ``
 
-A string value that is used to do something else with whatever else.
+Wrap the minified template into a function, not wrapped by default
 
 ### Usage Examples
 
@@ -70,13 +88,16 @@ In this example, custom options are used to do something else with whatever else
 
 ```js
 grunt.initConfig({
-  eeTemplate: {
+  jstminifiedtpl: {
     options: {
-      separator: ': ',
-      punctuation: ' !!!',
+      prefix: 'window.JST',
+      wrapfunction: '',
+      removeComments: true,
+      collapseWhitespace: true,
+      removeEmptyAttributes: true
     },
     files: {
-      'dest/default_options': ['src/testing', 'src/123'],
+      'dest/tpl.js': ['src/testing', 'src/123'],
     },
   },
 });

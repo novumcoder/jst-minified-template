@@ -22,13 +22,14 @@ module.exports = function( grunt) {
       removeEmptyAttributes: true
     });
 
-    var result = prefix + '= {';
-    var entries = [];
+    
 
     // Iterate over all specified file groups.
     this.files.forEach( function( f) {
+      var result = prefix + '= {';
+      var entries = {};
       // Concat specified files.
-      var src = f.src.filter( function( filepath) {
+      var src = f.dest.filter( function( filepath) {
         // Warn on and remove invalid source files (if nonull was set).
         if( !grunt.file.exists( filepath)) {
           grunt.log.warn( 'Source file "' + filepath + '" not found.');
@@ -36,15 +37,18 @@ module.exports = function( grunt) {
         } else {
           return true;
         }
-      }).map( function( filepath) {
-        // Read file source.
-        glob( "**/*.js", options, function( er, files) {
-          grunt.log.write( JSON.stringify( files));
-        });
-      }).join( grunt.util.normalizelf( options.separator));
+      }); 
+
+      // Read file source.
+      glob( dest, options, function( er, files) {
+        grunt.log.write( JSON.stringify( files));
+      });
+
+      result += entries.join( ',');
+      result += '};';
+      
+      grunt.log.write( 'File write to '+f.src);
     });
 
-    result += entries.join( ',');
-    result += '};';
   });
 };
