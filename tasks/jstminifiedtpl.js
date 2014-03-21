@@ -10,7 +10,6 @@
 var chalk = require( 'chalk');
 var prettyBytes = require( 'pretty-bytes');
 var minify = require( 'html-minifier').minify;
-var glob = require( 'glob');
 var path = require( 'path');
 
 module.exports = function( grunt) {

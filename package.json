@@ -29,8 +29,7 @@
   "dependencies": {
     "html-minifier": "~0.5.5",
     "pretty-bytes": "~0.1.0",
-    "chalk": "~0.4.0",
-    "glob": "~3.2.9"
+    "chalk": "~0.4.0"
   },
   "devDependencies": {
     "grunt-contrib-jshint": "~0.6.0",
