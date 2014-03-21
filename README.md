@@ -1,6 +1,6 @@
 # JST minifed template
 
-> produce JST file with minified html for ee.Template
+> produce JST file with minified html
 
 ## Getting Started
 This plugin requires Grunt `~0.4.2`
@@ -20,7 +20,7 @@ grunt.loadNpmTasks('jstminifiedtpl');
 ## The "JST minifed template" task
 
 ### Overview
-In your project's Gruntfile, add a section named `eeTemplate` to the data object passed into `grunt.initConfig()`.
+In your project's Gruntfile, add a section named `jstminifiedtpl` to the data object passed into `grunt.initConfig()`.
 
 ```js
 grunt.initConfig({
