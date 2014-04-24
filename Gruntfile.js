@@ -29,39 +29,49 @@ module.exports = function( grunt) {
     jstminifiedtpl: {
       default_options: {
         options: {
-          prefix: 'var window=window||(window={});window.JST'
+          prefix: 'var window=window||(window={});window.JST='
         },
         files: {
           'tmp/default_options.js': ['test/a/*.html', 'test/b/*.html', 'test/*.html'],
-        },
+        }
       },
       appendjs_options: {
         options: {
-          prefix: 'var window=window||(window={});function myfunction(a){}window.JST',
+          prefix: 'var window=window||(window={});function myfunction(a){}window.JST=',
           appendJSCode: 'myfunction( window.JST);'
         },
         files: {
           'tmp/appendjs_options.js': ['test/a/*.html', 'test/b/*.html', 'test/*.html'],
-        },
+        }
       },
       wrapandappendjs_options: {
         options: {
-          prefix: 'var window=window||(window={});function myfunction2(a){}function parse(a){}window.JST',
+          prefix: 'var window=window||(window={});function myfunction2(a){}function parse(a){}window.JST=',
           appendJSCode: 'myfunction2( window.JST);',
           wrapfunction: 'parse'
         },
         files: {
           'tmp/wrapandappendjs_options.js': ['test/a/*.html', 'test/b/*.html', 'test/*.html'],
-        },
+        }
       },
       removeprefix_options: {
         options: {
-          prefix: 'var window=window||(window={});window.JST',
+          prefix: 'var window=window||(window={});window.JST=',
           removekeyprefix: 'test/'
         },
         files: {
           'tmp/removeprefix_options.js': ['test/a/*.html', 'test/b/*.html', 'test/*.html'],
+        }
+      },
+      wrapresultandappendjs_options: {
+        options: {
+          prefix: 'function func(){}function parse(a){}',
+          appendJSCode: 'func();',
+          wrapfunctionresult: 'parse'
         },
+        files: {
+          'tmp/wrapresultandappendjs_options.js': ['test/a/*.html', 'test/b/*.html', 'test/*.html'],
+        }
       }
     },
 

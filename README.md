@@ -57,7 +57,7 @@ Remove empty attributes from HTML tags
 
 #### options.prefix
 Type: `String`
-Default value: `window.JST`
+Default value: `window.JST=`
 
 The global scope var to be used to set the minified templates in the jst file
 
@@ -66,6 +66,12 @@ Type: `String`
 Default value: ``
 
 Wrap the minified template into a function, not wrapped by default
+
+#### options.wrapfunctionresult
+Type: `String`
+Default value: ``
+
+Wrap the entire minified template json object into a function, not wrapped by default
 
 #### options.removekeyprefix
 Type: `String`
@@ -151,6 +157,30 @@ grunt.initConfig({
       prefix: 'window.JST',
       wrapfunction: 'myfunction',
       appendJSCode: 'doSomething(window.JST);',
+      removekeyprefix: 'src/'
+      removeComments: true,
+      collapseWhitespace: true,
+      removeEmptyAttributes: true
+    },
+    files: {
+      'dest/tpl.js': ['src/*.html', 'src/a/*.html'],
+    },
+  },
+});
+```
+
+Here we use wrapfunctionresult and appendJSCode:
+Each minified template/HTML will be wrapped within function myfunction, so we can do something before they are assigned to window.JST.
+Then we append some additional code after the window.JST object, for example to do something with the resulting window.JST.
+Additionally we remove src/ from the keys so our resulting object will only contain html filenames as keys.
+
+```js
+grunt.initConfig({
+  jstminifiedtpl: {
+    options: {
+      prefix: '',
+      wrapfunctionresult: 'myfunction',
+      appendJSCode: 'doSomething();',
       removekeyprefix: 'src/'
       removeComments: true,
       collapseWhitespace: true,

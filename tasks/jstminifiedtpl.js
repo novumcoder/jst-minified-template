@@ -16,8 +16,9 @@ module.exports = function( grunt) {
   grunt.registerMultiTask( 'jstminifiedtpl', 'produce JST file with minified html for ee.Template', function() {
     // Merge task-specific and/or target-specific options with these defaults.
     var options = this.options( {
-      prefix: 'window.JST',
+      prefix: 'window.JST=',
       wrapfunction: '',
+      wrapfunctionresult: '',
       removeComments: true,
       removekeyprefix: '',
       collapseWhitespace: true,
@@ -27,7 +28,7 @@ module.exports = function( grunt) {
 
     // Iterate over all specified file groups.
     this.files.forEach( function( f) {
-      var result = options.prefix + '=';
+      var result = options.prefix ? options.prefix : '';
       var entries = [];
 
       // Read file source.
@@ -48,7 +49,11 @@ module.exports = function( grunt) {
         grunt.log.writeln( 'Handling file '+chalk.red(htmlfile)+', original size: '+chalk.cyan(prettyBytes(max.length))+', minified: '+chalk.cyan(prettyBytes(min.length)));
       });
 
-      result += '{'+entries.join(',')+'};';
+      if( options.wrapfunctionresult) {
+        result += options.wrapfunctionresult+'({'+entries.join(',')+'});';
+      } else {
+        result += '{'+entries.join(',')+'};';
+      }
       if( options.appendJSCode) {
         result += options.appendJSCode;
       }
