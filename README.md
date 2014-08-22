@@ -83,6 +83,13 @@ If your files are located at templates/foo/bar/main.html then your key in the re
 be templates/foo/bar/main. But lets say you want to get rid of the templates/foo/ so your key results
 in bar/main, then set the option to templates/foo/
 
+#### options.appendJSCode
+Type: `String`
+Default value: ``
+
+You can append some js code after the resulting object. If you have window.JST={"foo":"<div>....</div>", ...}; as your resulting object, you can add 
+some js code after the semicolon, for example a function call like 'doSomething(window.JST);'. In this case add options.appendJSCode='doSomething(window.JST);'
+
 ### Usage Examples
 
 #### Default Options
