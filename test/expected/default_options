@@ -1,1 +1,1 @@
-var window=window||(window={});window.JST={"test/a/hello":"<span>Hello World</span> <span>{{text}}</span>","test/b/world":"<div class=\"helloworld\">Test file {{test}}</div>","test/start":"<div class=\"start\">{{hello}}</div><div>{{morestuff}}</div>"};
+var window=window||(window={});window.JST={"test/a/hello":"<span>Hello World</span> <span>{{text}}</span>","test/b/world":"<div class=\"helloworld\" {{#test}}test=\"{{test}}\"{{/test}}>Test file {{test}}</div>","test/start":"<div class=\"start\">{{hello}}</div><div>{{morestuff}}</div>"};

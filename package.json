@@ -1,7 +1,7 @@
 {
   "name": "grunt-jstminifiedtpl",
   "description": "produce JST file with minified html",
-  "version": "0.2.3",
+  "version": "0.2.4",
   "homepage": "https://github.com/novumcoder/jst-minified-template",
   "author": {
     "name": "Eser Esen",
@@ -27,9 +27,9 @@
     "test": "grunt test"
   },
   "dependencies": {
-    "html-minifier": "~0.5.5",
-    "pretty-bytes": "~0.1.0",
-    "chalk": "~0.4.0"
+    "html-minifier": "~0.6.9",
+    "pretty-bytes": "~1.0.2",
+    "chalk": "~0.5.1"
   },
   "devDependencies": {
     "grunt-contrib-jshint": "~0.6.0",

@@ -23,6 +23,10 @@ module.exports = function( grunt) {
       removekeyprefix: '',
       collapseWhitespace: true,
       removeEmptyAttributes: true,
+      customAttrSurround: [
+        [/\{\{#[^}]+\}\}/, /\{\{\/[^}]+\}\}/],
+        [/\{\{\^[^}]+\}\}/, /\{\{\/[^}]+\}\}/]
+      ],
       appendJSCode: ''
     });
 
